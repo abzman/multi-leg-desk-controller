@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440">
+<title>4-bit R-2R ladder for the preset buttons</title>
+<style>
+  .w { fill: none; stroke: #2b2b2b; stroke-width: 1.2; }
+  .ts { font: 12px "DejaVu Sans", Arial, sans-serif; fill: #555; }
+  .th { font: 600 14px "DejaVu Sans", Arial, sans-serif; fill: #1a1a1a; }
+  .tt { font: 600 15px "DejaVu Sans", Arial, sans-serif; fill: #1a1a1a; }
+</style>
+<rect width="680" height="440" fill="#ffffff"/>
+<text class="tt" x="20" y="30">Preset buttons: 4-bit R-2R ladder on GPIO 33 (ADC1)</text>
+<g class="w">
+<path d="M90 110 H128 M162 110 H243 M277 110 H363 M397 110 H483 M517 110 H620"/>
+<path d="M90 110 V140"/>
+<path d="M78 140 H102 M82 146 H98 M86 152 H94"/>
+<rect x="128" y="103" width="34" height="14" rx="2"/>
+<rect x="243" y="103" width="34" height="14" rx="2"/>
+<rect x="363" y="103" width="34" height="14" rx="2"/>
+<rect x="483" y="103" width="34" height="14" rx="2"/>
+<path d="M600 110 V140 M588 140 H612 M588 147 H612 M600 147 V172"/>
+<path d="M588 172 H612 M592 178 H608 M596 184 H604"/>
+<path d="M200 110 V148 M200 182 V230 M320 110 V148 M320 182 V230 M440 110 V148 M440 182 V230 M560 110 V148 M560 182 V230"/>
+<rect x="193" y="148" width="14" height="34" rx="2"/>
+<rect x="313" y="148" width="14" height="34" rx="2"/>
+<rect x="433" y="148" width="14" height="34" rx="2"/>
+<rect x="553" y="148" width="14" height="34" rx="2"/>
+<path d="M200 230 H166 V255 M166 285 V300 M154 300 H178 M158 306 H174 M162 312 H170"/>
+<path d="M320 230 H286 V255 M286 285 V300 M274 300 H298 M278 306 H294 M282 312 H290"/>
+<path d="M440 230 H406 V255 M406 285 V300 M394 300 H418 M398 306 H414 M402 312 H410"/>
+<path d="M560 230 H526 V255 M526 285 V300 M514 300 H538 M518 306 H534 M522 312 H530"/>
+<rect x="159" y="255" width="14" height="30" rx="2"/>
+<rect x="279" y="255" width="14" height="30" rx="2"/>
+<rect x="399" y="255" width="14" height="30" rx="2"/>
+<rect x="519" y="255" width="14" height="30" rx="2"/>
+<path d="M200 230 V268 M200 300 V340 M200 268 L214 296 M206 282 H218"/>
+<path d="M320 230 V268 M320 300 V340 M320 268 L334 296 M326 282 H338"/>
+<path d="M440 230 V268 M440 300 V340 M440 268 L454 296 M446 282 H458"/>
+<path d="M560 230 V268 M560 300 V340 M560 268 L574 296 M566 282 H578"/>
+<path d="M150 340 H590" stroke-width="2"/>
+<circle cx="620" cy="110" r="4"/>
+</g>
+<g fill="#2b2b2b">
+<circle cx="200" cy="110" r="3"/><circle cx="320" cy="110" r="3"/><circle cx="440" cy="110" r="3"/><circle cx="560" cy="110" r="3"/><circle cx="600" cy="110" r="3"/>
+<circle cx="200" cy="230" r="3"/><circle cx="320" cy="230" r="3"/><circle cx="440" cy="230" r="3"/><circle cx="560" cy="230" r="3"/>
+</g>
+<text class="ts" x="145" y="94" text-anchor="middle">2R</text>
+<text class="ts" x="260" y="94" text-anchor="middle">R</text>
+<text class="ts" x="380" y="94" text-anchor="middle">R</text>
+<text class="ts" x="500" y="94" text-anchor="middle">R</text>
+<text class="th" x="620" y="88" text-anchor="middle">GPIO 33</text>
+<text class="ts" x="616" y="148">100n</text>
+<text class="ts" x="213" y="169">2R</text>
+<text class="ts" x="333" y="169">2R</text>
+<text class="ts" x="453" y="169">2R</text>
+<text class="ts" x="573" y="169">2R</text>
+<text class="ts" x="152" y="274" text-anchor="end">1k</text>
+<text class="ts" x="272" y="274" text-anchor="end">1k</text>
+<text class="ts" x="392" y="274" text-anchor="end">1k</text>
+<text class="ts" x="512" y="274" text-anchor="end">1k</text>
+<text class="th" x="140" y="344" text-anchor="end">3.3V</text>
+<text class="th" x="200" y="366" text-anchor="middle">P4</text>
+<text class="th" x="320" y="366" text-anchor="middle">P3</text>
+<text class="th" x="440" y="366" text-anchor="middle">P2</text>
+<text class="th" x="560" y="366" text-anchor="middle">P1</text>
+<text class="ts" x="200" y="386" text-anchor="middle">0.21 V</text>
+<text class="ts" x="320" y="386" text-anchor="middle">0.41 V</text>
+<text class="ts" x="440" y="386" text-anchor="middle">0.82 V</text>
+<text class="ts" x="560" y="386" text-anchor="middle">1.65 V</text>
+<text class="ts" x="20" y="420">R = 10k, 2R = 20k. Voltages are ideal single-button readings; run "btncal" to learn the real ones.</text>
+</svg>

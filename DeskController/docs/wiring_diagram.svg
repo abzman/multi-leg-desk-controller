@@ -1,0 +1,378 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1310" viewBox="0 0 1500 1310" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1500" height="1310" fill="#fff"/>
+<text x="40" y="30" font-size="20" text-anchor="start" font-weight="bold" fill="#222">4-leg standing desk controller: wiring</text>
+<text x="1460" y="30" font-size="13" text-anchor="end" font-weight="normal" fill="#666">pins match Config.h  ·  ESP32-WROVER-E</text>
+<rect x="40" y="60" width="190" height="100" rx="8" fill="#f7f7f7" stroke="#444" stroke-width="1.5"/>
+<text x="135.0" y="82" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">24 V PSU</text>
+<text x="135.0" y="100" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">sized for 4 motors</text>
+<text x="225" y="88" font-size="16" text-anchor="end" font-weight="bold" fill="#d62728">+</text>
+<text x="225" y="138" font-size="18" text-anchor="end" font-weight="bold" fill="#222222">−</text>
+<rect x="290" y="60" width="190" height="100" rx="8" fill="#f7f7f7" stroke="#444" stroke-width="1.5"/>
+<text x="385.0" y="82" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">Buck 24 V → 5 V</text>
+<text x="385.0" y="100" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">≥1 A, for the ESP32</text>
+<rect x="560" y="60" width="210" height="100" rx="8" fill="#f7f7f7" stroke="#444" stroke-width="1.5"/>
+<text x="665.0" y="82" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">Kill relay / MOSFET</text>
+<text x="665.0" y="100" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">optional, active HIGH</text>
+<path d="M230,85 L260,85" fill="none" stroke="#d62728" stroke-width="2.2" stroke-linejoin="round"/>
+<rect x="242" y="78" width="16" height="14" rx="3" fill="#fff" stroke="#d62728" stroke-width="1.8"/>
+<text x="250" y="72" font-size="11" text-anchor="middle" font-weight="normal" fill="#d62728">fuse</text>
+<path d="M258,85 L290,85" fill="none" stroke="#d62728" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="272" cy="85" r="3.5" fill="#d62728"/>
+<path d="M272,85 L272,48 L530,48 L530,135 L560,135" fill="none" stroke="#d62728" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="400" y="44" font-size="11" text-anchor="middle" font-weight="normal" fill="#d62728">+24 V (always on)</text>
+<path d="M230,135 L290,135" fill="none" stroke="#222222" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="296" y="89" font-size="11" text-anchor="start" font-weight="normal" fill="#555">VIN</text>
+<text x="296" y="139" font-size="11" text-anchor="start" font-weight="normal" fill="#555">GND</text>
+<text x="566" y="139" font-size="11" text-anchor="start" font-weight="normal" fill="#555">COM</text>
+<path d="M770,135 L1120,135 L1120,230" fill="none" stroke="#d62728" stroke-width="3" stroke-linejoin="round"/>
+<text x="945" y="128" font-size="12" text-anchor="middle" font-weight="bold" fill="#d62728">+24 V switched → motor board</text>
+<text x="764" y="139" font-size="11" text-anchor="end" font-weight="normal" fill="#555">NO</text>
+<path d="M330,160 L330,200 L520,200 L520,230" fill="none" stroke="#ff7f0e" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M400,160 L400,188 L560,188 L560,230" fill="none" stroke="#222222" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="336" y="176" font-size="11" text-anchor="start" font-weight="normal" fill="#ff7f0e">5V</text>
+<text x="406" y="176" font-size="11" text-anchor="start" font-weight="normal" fill="#222222">GND</text>
+<rect x="577.4" y="172" width="25.2" height="20" rx="10" fill="#fff" stroke="#ff7f0e" stroke-width="1.8"/>
+<text x="590.0" y="186.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#ff7f0e">5V</text>
+<path d="M590,160 L590,172" fill="none" stroke="#ff7f0e" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="633.6" y="172" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="650.0" y="186.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M650,160 L650,172" fill="none" stroke="#222222" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M720,160 L720,230" fill="none" stroke="#555555" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="726" y="176" font-size="11" text-anchor="start" font-weight="normal" fill="#555">IN</text>
+<rect x="470" y="230" width="290" height="1020" rx="10" fill="#eef3fb" stroke="#1f4e79" stroke-width="2"/>
+<text x="615.0" y="422" font-size="17" text-anchor="middle" font-weight="bold" fill="#1f4e79">ESP32-WROVER-E</text>
+<text x="615.0" y="440" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">dev board</text>
+<text x="615.0" y="462" font-size="11" text-anchor="middle" font-weight="normal" fill="#a00">never use:</text>
+<text x="615.0" y="477" font-size="11" text-anchor="middle" font-weight="normal" fill="#a00">0 2 5 12 15 (strapping)</text>
+<text x="615.0" y="492" font-size="11" text-anchor="middle" font-weight="normal" fill="#a00">6–11 (flash) · 16 17 (PSRAM)</text>
+<text x="615.0" y="760" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">spare: GPIO 14</text>
+<circle cx="520" cy="230" r="4" fill="#fff" stroke="#ff7f0e" stroke-width="2"/>
+<text x="520" y="250" font-size="11" text-anchor="middle" font-weight="normal" fill="#333">5V</text>
+<circle cx="560" cy="230" r="4" fill="#fff" stroke="#222222" stroke-width="2"/>
+<text x="560" y="250" font-size="11" text-anchor="middle" font-weight="normal" fill="#333">GND</text>
+<circle cx="720" cy="230" r="4" fill="#fff" stroke="#555555" stroke-width="2"/>
+<text x="720" y="250" font-size="11" text-anchor="middle" font-weight="normal" fill="#333">GPIO 4</text>
+<text x="752" y="264" font-size="10" text-anchor="end" font-weight="normal" fill="#777">(PIN_MOTOR_POWER)</text>
+<rect x="40" y="240" width="260" height="140" rx="8" fill="#eaf7f8" stroke="#00838f" stroke-width="1.5"/>
+<text x="170.0" y="262" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">LED display</text>
+<text x="170.0" y="280" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">Gotek LEDC68 (TM1651)</text>
+<circle cx="300" cy="300" r="4" fill="#fff" stroke="#00838f" stroke-width="2"/>
+<text x="292" y="304" font-size="12" text-anchor="end" font-weight="normal" fill="#222">CLK</text>
+<circle cx="300" cy="340" r="4" fill="#fff" stroke="#00838f" stroke-width="2"/>
+<text x="292" y="344" font-size="12" text-anchor="end" font-weight="normal" fill="#222">DIO</text>
+<rect x="63.6" y="290" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="80.0" y="304.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<rect x="63.6" y="330" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="80.0" y="344.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<text x="60" y="368" font-size="11" text-anchor="start" font-weight="normal" fill="#a00">power from 3.3 V, NOT 5 V</text>
+<circle cx="470" cy="300" r="4" fill="#fff" stroke="#00838f" stroke-width="2"/>
+<text x="480" y="304" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GPIO 23  CLK</text>
+<circle cx="470" cy="340" r="4" fill="#fff" stroke="#00838f" stroke-width="2"/>
+<text x="480" y="344" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GPIO 27  DIO</text>
+<path d="M300,300 L470,300" fill="none" stroke="#00838f" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M300,340 L470,340" fill="none" stroke="#00838f" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="400" cy="340" r="3.5" fill="#00838f"/>
+<path d="M400,340 L400,347.0" fill="none" stroke="#00838f" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M400,365.0 L400,372" fill="none" stroke="#00838f" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="395" y="347.0" width="10" height="18" rx="2" fill="#fff" stroke="#00838f" stroke-width="1.8"/>
+<path d="M400,372 L400,380" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="383.6" y="382" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="400.0" y="396.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="412" y="360" font-size="11" text-anchor="start" font-weight="normal" fill="#555">10k</text>
+<text x="330" y="412" font-size="10" text-anchor="start" font-weight="normal" fill="#777">(optional, long wires)</text>
+<rect x="40" y="440" width="260" height="170" rx="8" fill="#eef7ee" stroke="#2e7d32" stroke-width="1.5"/>
+<text x="170.0" y="462" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">UP / DOWN buttons</text>
+<text x="170.0" y="480" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">momentary, to GND</text>
+<rect x="61.6" y="510" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="78.0" y="524.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M98,520 L165.0,520" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M193.0,520 L260,520" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M165.0,520 L191.0,510" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linejoin="round"/>
+<path d="M179.0,502 L179.0,514" fill="none" stroke="#2e7d32" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M173.0,502 L185.0,502" fill="none" stroke="#2e7d32" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="165.0" cy="520" r="3.5" fill="#2e7d32"/>
+<circle cx="193.0" cy="520" r="3.5" fill="#2e7d32"/>
+<text x="179" y="540" font-size="12" text-anchor="middle" font-weight="bold" fill="#2e7d32">UP</text>
+<path d="M260,520 L470,520" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="470" cy="520" r="4" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+<text x="480" y="524" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GPIO 18  UP</text>
+<rect x="61.6" y="560" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="78.0" y="574.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M98,570 L165.0,570" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M193.0,570 L260,570" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M165.0,570 L191.0,560" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linejoin="round"/>
+<path d="M179.0,552 L179.0,564" fill="none" stroke="#2e7d32" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M173.0,552 L185.0,552" fill="none" stroke="#2e7d32" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="165.0" cy="570" r="3.5" fill="#2e7d32"/>
+<circle cx="193.0" cy="570" r="3.5" fill="#2e7d32"/>
+<text x="179" y="590" font-size="12" text-anchor="middle" font-weight="bold" fill="#2e7d32">DOWN</text>
+<path d="M260,570 L470,570" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="470" cy="570" r="4" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+<text x="480" y="574" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GPIO 19  DOWN</text>
+<text x="320" y="600" font-size="10" text-anchor="start" font-weight="normal" fill="#777">internal pull-ups</text>
+<rect x="40" y="650" width="260" height="200" rx="8" fill="#f6f1ee" stroke="#8d6e63" stroke-width="1.5"/>
+<text x="170.0" y="672" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">Preset buttons P1–P4</text>
+<text x="170.0" y="690" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">R-2R ladder</text>
+<text x="170" y="732" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">R = 10k, 2R = 20k, 1k pull-downs</text>
+<text x="170" y="750" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">buttons switch to 3.3 V</text>
+<text x="170" y="768" font-size="11" text-anchor="middle" font-weight="normal" fill="#555">100 nF from OUT to GND</text>
+<text x="170" y="792" font-size="11" text-anchor="middle" font-weight="bold" fill="#8d6e63">details: preset_ladder.png</text>
+<rect x="73.6" y="815" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="90.0" y="829.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<rect x="153.6" y="815" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="170.0" y="829.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<circle cx="300" cy="710" r="4" fill="#fff" stroke="#8d6e63" stroke-width="2"/>
+<text x="292" y="714" font-size="12" text-anchor="end" font-weight="normal" fill="#222">OUT</text>
+<path d="M300,710 L470,710" fill="none" stroke="#8d6e63" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="470" cy="710" r="4" fill="#fff" stroke="#8d6e63" stroke-width="2"/>
+<text x="480" y="714" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GPIO 33  ladder</text>
+<text x="320" y="732" font-size="10" text-anchor="start" font-weight="normal" fill="#777">ADC1 only</text>
+<rect x="1000" y="230" width="440" height="330" rx="8" fill="#fdf0f0" stroke="#8b0000" stroke-width="1.5"/>
+<text x="1220.0" y="252" font-size="15" text-anchor="middle" font-weight="bold" fill="#222">i2c BTS7960 motor board</text>
+<text x="1220.0" y="270" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">PCA9685 @ 0x40 · ISO1540 isolated I2C · 8× BTS7960B</text>
+<circle cx="1120" cy="230" r="4" fill="#fff" stroke="#d62728" stroke-width="2"/>
+<text x="1126" y="222" font-size="11" text-anchor="start" font-weight="normal" fill="#333">V+</text>
+<circle cx="1200" cy="230" r="4" fill="#fff" stroke="#222222" stroke-width="2"/>
+<text x="1206" y="222" font-size="11" text-anchor="start" font-weight="normal" fill="#333">V−</text>
+<path d="M1200,230 L1200,175" fill="none" stroke="#222222" stroke-width="2.2" stroke-linejoin="round"/>
+<rect x="1176.0" y="155" width="48.0" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="1200.0" y="169.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">PSU −</text>
+<text x="1020" y="286" font-size="11" text-anchor="start" font-weight="normal" fill="#777">qwiic</text>
+<circle cx="1000" cy="300" r="4" fill="#fff" stroke="#222222" stroke-width="2"/>
+<text x="1010" y="304" font-size="12" text-anchor="start" font-weight="normal" fill="#333">GND</text>
+<path d="M760,300 L1000,300" fill="none" stroke="#222222" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="760" cy="300" r="4" fill="#fff" stroke="#222222" stroke-width="2"/>
+<text x="750" y="304" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GND</text>
+<circle cx="1000" cy="330" r="4" fill="#fff" stroke="#c2185b" stroke-width="2"/>
+<text x="1010" y="334" font-size="12" text-anchor="start" font-weight="normal" fill="#333">3V3</text>
+<path d="M760,330 L1000,330" fill="none" stroke="#c2185b" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="760" cy="330" r="4" fill="#fff" stroke="#c2185b" stroke-width="2"/>
+<text x="750" y="334" font-size="12" text-anchor="end" font-weight="normal" fill="#333">3V3</text>
+<circle cx="1000" cy="360" r="4" fill="#fff" stroke="#1f77b4" stroke-width="2"/>
+<text x="1010" y="364" font-size="12" text-anchor="start" font-weight="normal" fill="#333">SDA</text>
+<path d="M760,360 L1000,360" fill="none" stroke="#1f77b4" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="760" cy="360" r="4" fill="#fff" stroke="#1f77b4" stroke-width="2"/>
+<text x="750" y="364" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 21  SDA</text>
+<circle cx="1000" cy="390" r="4" fill="#fff" stroke="#1f77b4" stroke-width="2"/>
+<text x="1010" y="394" font-size="12" text-anchor="start" font-weight="normal" fill="#333">SCL</text>
+<path d="M760,390 L1000,390" fill="none" stroke="#1f77b4" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="760" cy="390" r="4" fill="#fff" stroke="#1f77b4" stroke-width="2"/>
+<text x="750" y="394" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 22  SCL</text>
+<text x="1080" y="420" font-size="11" text-anchor="start" font-weight="normal" fill="#555">qwiic pin order: 1 GND · 2 3V3 · 3 SDA · 4 SCL</text>
+<text x="1080" y="438" font-size="11" text-anchor="start" font-weight="normal" fill="#555">ESP32 3.3 V powers the ISO1540's ESP32 side</text>
+<circle cx="845" cy="360" r="3.5" fill="#1f77b4"/>
+<path d="M845,360 L845,336.0" fill="none" stroke="#1f77b4" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M845,354.0 L845,330" fill="none" stroke="#1f77b4" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="840" y="336.0" width="10" height="18" rx="2" fill="#fff" stroke="#1f77b4" stroke-width="1.8"/>
+<circle cx="845" cy="330" r="3.5" fill="#c2185b"/>
+<circle cx="885" cy="390" r="3.5" fill="#1f77b4"/>
+<path d="M885,390 L885,398.0" fill="none" stroke="#1f77b4" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M885,416.0 L885,424" fill="none" stroke="#1f77b4" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="880" y="398.0" width="10" height="18" rx="2" fill="#fff" stroke="#1f77b4" stroke-width="1.8"/>
+<rect x="868.6" y="426" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="885.0" y="440.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="905" y="414" font-size="10" text-anchor="start" font-weight="normal" fill="#555">2.2–3.3k pull-ups</text>
+<text x="905" y="428" font-size="10" text-anchor="start" font-weight="normal" fill="#777">(recommended)</text>
+<text x="1080" y="462" font-size="11" text-anchor="start" font-weight="normal" fill="#555">motor ports (J2/J4 screw terminals in parallel):</text>
+<path d="M1320,470 L1440,470" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1440" cy="470" r="4" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1314" y="474" font-size="12" text-anchor="end" font-weight="bold" fill="#8b0000">P1  J5 1-2  → leg 0</text>
+<path d="M1320,495 L1440,495" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1440" cy="495" r="4" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1314" y="499" font-size="12" text-anchor="end" font-weight="bold" fill="#8b0000">P2  J5 3-4  → leg 1</text>
+<path d="M1320,520 L1440,520" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1440" cy="520" r="4" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1314" y="524" font-size="12" text-anchor="end" font-weight="bold" fill="#8b0000">P3  J3 1-2  → leg 2</text>
+<path d="M1320,545 L1440,545" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1440" cy="545" r="4" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1314" y="549" font-size="12" text-anchor="end" font-weight="bold" fill="#8b0000">P4  J3 3-4  → leg 3</text>
+<rect x="1020" y="610" width="420" height="135" rx="8" fill="#f5f0fa" stroke="#7b3fa0" stroke-width="1.5"/>
+<text x="1036" y="634" font-size="15" text-anchor="start" font-weight="bold" fill="#222">Leg 0</text>
+<text x="1098" y="634" font-size="12" text-anchor="start" font-weight="normal" fill="#555">(front-left)</text>
+<circle cx="1020" cy="665" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<circle cx="1020" cy="705" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="1032" y="669" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder A</text>
+<text x="1032" y="709" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder B</text>
+<rect x="1155.8" y="655" width="78.39999999999999" height="20" rx="10" fill="#fff" stroke="#ff7f0e" stroke-width="1.8"/>
+<text x="1195.0" y="669.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#ff7f0e">VCC → 5V*</text>
+<rect x="1178.6" y="695" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="1195.0" y="709.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M1380,665 L1420,665" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1380,705 L1420,705" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1350" cy="685.0" r="22" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1350" y="690.0" font-size="15" text-anchor="middle" font-weight="bold" fill="#8b0000">M</text>
+<path d="M1368,671 L1380,665" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<path d="M1368,699 L1380,705" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<text x="1426" y="734" font-size="11" text-anchor="end" font-weight="bold" fill="#8b0000">24 V motor ← board P1 (J5 1-2)</text>
+<circle cx="760" cy="665" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="669" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 34  L0A</text>
+<circle cx="760" cy="705" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="709" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 35  L0B</text>
+<path d="M760,665 L1020,665" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M760,705 L1020,705" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="870" cy="665" r="3.5" fill="#7b3fa0"/>
+<path d="M870,665 L870,639.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M870,657.0 L870,631" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="865" y="639.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="853.6" y="611" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="870.0" y="625.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<circle cx="930" cy="705" r="3.5" fill="#7b3fa0"/>
+<path d="M930,705 L930,713.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M930,731.0 L930,739" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="925" y="713.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="913.6" y="739" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="930.0" y="753.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="884" y="647" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<text x="944" y="727" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<rect x="1020" y="775" width="420" height="135" rx="8" fill="#f5f0fa" stroke="#7b3fa0" stroke-width="1.5"/>
+<text x="1036" y="799" font-size="15" text-anchor="start" font-weight="bold" fill="#222">Leg 1</text>
+<text x="1098" y="799" font-size="12" text-anchor="start" font-weight="normal" fill="#555">(front-right)</text>
+<circle cx="1020" cy="830" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<circle cx="1020" cy="870" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="1032" y="834" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder A</text>
+<text x="1032" y="874" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder B</text>
+<rect x="1155.8" y="820" width="78.39999999999999" height="20" rx="10" fill="#fff" stroke="#ff7f0e" stroke-width="1.8"/>
+<text x="1195.0" y="834.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#ff7f0e">VCC → 5V*</text>
+<rect x="1178.6" y="860" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="1195.0" y="874.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M1380,830 L1420,830" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1380,870 L1420,870" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1350" cy="850.0" r="22" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1350" y="855.0" font-size="15" text-anchor="middle" font-weight="bold" fill="#8b0000">M</text>
+<path d="M1368,836 L1380,830" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<path d="M1368,864 L1380,870" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<text x="1426" y="899" font-size="11" text-anchor="end" font-weight="bold" fill="#8b0000">24 V motor ← board P2 (J5 3-4)</text>
+<circle cx="760" cy="830" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="834" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 36  L1A</text>
+<circle cx="760" cy="870" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="874" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 39  L1B</text>
+<path d="M760,830 L1020,830" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M760,870 L1020,870" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="870" cy="830" r="3.5" fill="#7b3fa0"/>
+<path d="M870,830 L870,804.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M870,822.0 L870,796" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="865" y="804.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="853.6" y="776" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="870.0" y="790.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<circle cx="930" cy="870" r="3.5" fill="#7b3fa0"/>
+<path d="M930,870 L930,878.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M930,896.0 L930,904" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="925" y="878.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="913.6" y="904" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="930.0" y="918.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="884" y="812" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<text x="944" y="892" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<rect x="1020" y="940" width="420" height="135" rx="8" fill="#f5f0fa" stroke="#7b3fa0" stroke-width="1.5"/>
+<text x="1036" y="964" font-size="15" text-anchor="start" font-weight="bold" fill="#222">Leg 2</text>
+<text x="1098" y="964" font-size="12" text-anchor="start" font-weight="normal" fill="#555">(rear-left)</text>
+<circle cx="1020" cy="995" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<circle cx="1020" cy="1035" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="1032" y="999" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder A</text>
+<text x="1032" y="1039" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder B</text>
+<rect x="1155.8" y="985" width="78.39999999999999" height="20" rx="10" fill="#fff" stroke="#ff7f0e" stroke-width="1.8"/>
+<text x="1195.0" y="999.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#ff7f0e">VCC → 5V*</text>
+<rect x="1178.6" y="1025" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="1195.0" y="1039.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M1380,995 L1420,995" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1380,1035 L1420,1035" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1350" cy="1015.0" r="22" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1350" y="1020.0" font-size="15" text-anchor="middle" font-weight="bold" fill="#8b0000">M</text>
+<path d="M1368,1001 L1380,995" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<path d="M1368,1029 L1380,1035" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<text x="1426" y="1064" font-size="11" text-anchor="end" font-weight="bold" fill="#8b0000">24 V motor ← board P3 (J3 1-2)</text>
+<circle cx="760" cy="995" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="999" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 32  L2A</text>
+<circle cx="760" cy="1035" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="1039" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 13  L2B</text>
+<path d="M760,995 L1020,995" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M760,1035 L1020,1035" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="870" cy="995" r="3.5" fill="#7b3fa0"/>
+<path d="M870,995 L870,969.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M870,987.0 L870,961" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="865" y="969.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="853.6" y="941" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="870.0" y="955.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<circle cx="930" cy="1035" r="3.5" fill="#7b3fa0"/>
+<path d="M930,1035 L930,1043.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M930,1061.0 L930,1069" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="925" y="1043.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="913.6" y="1069" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="930.0" y="1083.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="884" y="977" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<text x="944" y="1057" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<rect x="1020" y="1105" width="420" height="135" rx="8" fill="#f5f0fa" stroke="#7b3fa0" stroke-width="1.5"/>
+<text x="1036" y="1129" font-size="15" text-anchor="start" font-weight="bold" fill="#222">Leg 3</text>
+<text x="1098" y="1129" font-size="12" text-anchor="start" font-weight="normal" fill="#555">(rear-right)</text>
+<circle cx="1020" cy="1160" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<circle cx="1020" cy="1200" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="1032" y="1164" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder A</text>
+<text x="1032" y="1204" font-size="12" text-anchor="start" font-weight="normal" fill="#222">encoder B</text>
+<rect x="1155.8" y="1150" width="78.39999999999999" height="20" rx="10" fill="#fff" stroke="#ff7f0e" stroke-width="1.8"/>
+<text x="1195.0" y="1164.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#ff7f0e">VCC → 5V*</text>
+<rect x="1178.6" y="1190" width="32.8" height="20" rx="10" fill="#fff" stroke="#222222" stroke-width="1.8"/>
+<text x="1195.0" y="1204.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<path d="M1380,1160 L1420,1160" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1380,1200 L1420,1200" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1350" cy="1180.0" r="22" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+<text x="1350" y="1185.0" font-size="15" text-anchor="middle" font-weight="bold" fill="#8b0000">M</text>
+<path d="M1368,1166 L1380,1160" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<path d="M1368,1194 L1380,1200" fill="none" stroke="#8b0000" stroke-width="2" stroke-linejoin="round"/>
+<text x="1426" y="1229" font-size="11" text-anchor="end" font-weight="bold" fill="#8b0000">24 V motor ← board P4 (J3 3-4)</text>
+<circle cx="760" cy="1160" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="1164" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 25  L3A</text>
+<circle cx="760" cy="1200" r="4" fill="#fff" stroke="#7b3fa0" stroke-width="2"/>
+<text x="750" y="1204" font-size="12" text-anchor="end" font-weight="normal" fill="#333">GPIO 26  L3B</text>
+<path d="M760,1160 L1020,1160" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M760,1200 L1020,1200" fill="none" stroke="#7b3fa0" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="870" cy="1160" r="3.5" fill="#7b3fa0"/>
+<path d="M870,1160 L870,1134.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M870,1152.0 L870,1126" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="865" y="1134.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="853.6" y="1106" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="870.0" y="1120.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<circle cx="930" cy="1200" r="3.5" fill="#7b3fa0"/>
+<path d="M930,1200 L930,1208.0" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M930,1226.0 L930,1234" fill="none" stroke="#7b3fa0" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="925" y="1208.0" width="10" height="18" rx="2" fill="#fff" stroke="#7b3fa0" stroke-width="1.8"/>
+<rect x="913.6" y="1234" width="32.8" height="20" rx="10" fill="#fff" stroke="#c2185b" stroke-width="1.8"/>
+<text x="930.0" y="1248.5" font-size="12" text-anchor="middle" font-weight="bold" fill="#c2185b">3V3</text>
+<text x="884" y="1142" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<text x="944" y="1222" font-size="10" text-anchor="start" font-weight="normal" fill="#555">3.3k</text>
+<rect x="40" y="880" width="400" height="412" rx="8" fill="#fffdf3" stroke="#bbb" stroke-width="1.2"/>
+<text x="56" y="906" font-size="15" text-anchor="start" font-weight="bold" fill="#222">Notes</text>
+<text x="56" y="932" font-size="12" text-anchor="start" font-weight="normal" fill="#333">Kill relay: set PIN_MOTOR_POWER 4 in Config.h.</text>
+<text x="56" y="950" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  It must be ON when GPIO 4 is HIGH. Many relay</text>
+<text x="56" y="968" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  boards are active-LOW: use an active-HIGH board</text>
+<text x="56" y="986" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  or a MOSFET module. No relay? Wire +24 V straight</text>
+<text x="56" y="1004" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  to the board's V+ and leave PIN_MOTOR_POWER unset.</text>
+<text x="56" y="1022" font-size="12" text-anchor="start" font-weight="normal" fill="#333">The ESP32 runs from its own buck, so cutting motor</text>
+<text x="56" y="1040" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  power never resets the controller.</text>
+<text x="56" y="1058" font-size="12" text-anchor="start" font-weight="normal" fill="#333">*Encoders: most desk-leg hall sensors want 5 V.</text>
+<text x="56" y="1076" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  Pull-ups go to 3.3 V, NOT 5 V (open-collector</text>
+<text x="56" y="1094" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  outputs). 5 V push-pull outputs need a level</text>
+<text x="56" y="1112" font-size="12" text-anchor="start" font-weight="normal" fill="#333">  shifter. GPIO 34-39 have no internal pull-ups.</text>
+<text x="56" y="1130" font-size="12" text-anchor="start" font-weight="normal" fill="#333">Leg directions don't matter: run 'calib'.</text>
+<text x="56" y="1148" font-size="12" text-anchor="start" font-weight="normal" fill="#333">Fuse the 24 V line, sized to your PSU.</text>
+<text x="56" y="1180" font-size="13" text-anchor="start" font-weight="bold" fill="#222">Wire colours</text>
+<path d="M56,1198 L76,1198" fill="none" stroke="#d62728" stroke-width="3" stroke-linejoin="round"/>
+<text x="81" y="1202" font-size="11" text-anchor="start" font-weight="normal" fill="#222">24 V</text>
+<path d="M151,1198 L171,1198" fill="none" stroke="#ff7f0e" stroke-width="3" stroke-linejoin="round"/>
+<text x="176" y="1202" font-size="11" text-anchor="start" font-weight="normal" fill="#222">5 V</text>
+<path d="M246,1198 L266,1198" fill="none" stroke="#c2185b" stroke-width="3" stroke-linejoin="round"/>
+<text x="271" y="1202" font-size="11" text-anchor="start" font-weight="normal" fill="#222">3.3 V</text>
+<path d="M341,1198 L361,1198" fill="none" stroke="#222222" stroke-width="3" stroke-linejoin="round"/>
+<text x="366" y="1202" font-size="11" text-anchor="start" font-weight="normal" fill="#222">GND</text>
+<path d="M56,1220 L76,1220" fill="none" stroke="#1f77b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="81" y="1224" font-size="11" text-anchor="start" font-weight="normal" fill="#222">I2C</text>
+<path d="M151,1220 L171,1220" fill="none" stroke="#7b3fa0" stroke-width="3" stroke-linejoin="round"/>
+<text x="176" y="1224" font-size="11" text-anchor="start" font-weight="normal" fill="#222">encoders</text>
+<path d="M246,1220 L266,1220" fill="none" stroke="#8b0000" stroke-width="3" stroke-linejoin="round"/>
+<text x="271" y="1224" font-size="11" text-anchor="start" font-weight="normal" fill="#222">motor</text>
+<path d="M341,1220 L361,1220" fill="none" stroke="#2e7d32" stroke-width="3" stroke-linejoin="round"/>
+<text x="366" y="1224" font-size="11" text-anchor="start" font-weight="normal" fill="#222">buttons</text>
+<path d="M56,1242 L76,1242" fill="none" stroke="#00838f" stroke-width="3" stroke-linejoin="round"/>
+<text x="81" y="1246" font-size="11" text-anchor="start" font-weight="normal" fill="#222">display</text>
+<path d="M151,1242 L171,1242" fill="none" stroke="#8d6e63" stroke-width="3" stroke-linejoin="round"/>
+<text x="176" y="1246" font-size="11" text-anchor="start" font-weight="normal" fill="#222">ladder</text>
+<text x="56" y="1276" font-size="11" text-anchor="start" font-weight="normal" fill="#666" font-style="italic">pill labels = connect to that supply/ground</text>
+</svg>

@@ -1,0 +1,68 @@
+# =====================================================================
+#  Example automations for the 4-leg standing desk
+#  Paste into automations.yaml (or recreate in the UI). Adjust heights,
+#  times and notify targets ("notify.notify" / your phone's notify service).
+#
+#  Remote moves are safe to automate: obstructions trip the stall detector
+#  (Er2) and all four legs stop. Still, don't move the desk when nobody's
+#  around it unless you're sure nothing lives under it.
+# =====================================================================
+
+# Stand-up reminder: sitting (below 85 cm) for 45 min on a workday.
+# Tap the notification action to raise the desk to preset 2.
+- alias: Desk - stand-up reminder
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.standing_desk_height
+      below: 85
+      for: { minutes: 45 }
+  conditions:
+    - condition: time
+      after: "09:00:00"
+      before: "18:00:00"
+      weekday: [mon, tue, wed, thu, fri]
+  actions:
+    - action: notify.notify
+      data:
+        title: Time to stand
+        message: You've been sitting for 45 minutes.
+        data:
+          actions:
+            - action: DESK_STAND
+              title: Raise desk (preset 2)
+
+- alias: Desk - stand-up reminder action
+  triggers:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data: { action: DESK_STAND }
+  actions:
+    - action: button.press
+      target: { entity_id: button.standing_desk_preset_2 }
+
+# Tell me about faults (sync error, obstruction, encoder, motor driver).
+- alias: Desk - fault alert
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.standing_desk_problem
+      to: "on"
+  actions:
+    - action: notify.notify
+      data:
+        title: Standing desk stopped
+        message: "{{ states('sensor.standing_desk_fault') }}"
+
+# Park the desk at sitting height in the evening (go to a height in cm:
+# cover position is % of travel, the number entity takes cm directly).
+- alias: Desk - park at night
+  triggers:
+    - trigger: time
+      at: "22:00:00"
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.standing_desk_problem
+      state: "off"
+  actions:
+    - action: number.set_value
+      target: { entity_id: number.standing_desk_target_height }
+      data: { value: 72 }

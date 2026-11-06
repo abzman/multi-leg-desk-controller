@@ -1,0 +1,206 @@
+# =====================================================================
+#  Standing desk dashboard card (built-in cards only, no HACS needed)
+#
+#  Add to any dashboard: Edit dashboard -> Add card -> Manual -> paste.
+#  Assumes HA_DEVICE_NAME "Standing desk" in Config.h, so entities are
+#  cover.standing_desk, sensor.standing_desk_height, ... If you renamed
+#  the device, search-and-replace "standing_desk".
+#
+#  Presets: tap = go there, hold = save the current height (asks first).
+#  Each preset tile shows its saved height. Edit them directly on the
+#  device page (Configuration -> "Preset N height").
+# =====================================================================
+type: vertical-stack
+cards:
+  # ---- fault banner (only shown while there's a fault) ---------------
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: binary_sensor.standing_desk_problem
+        state: "on"
+    card:
+      type: tile
+      entity: sensor.standing_desk_fault
+      name: Desk fault (tap to clear)
+      icon: mdi:alert
+      color: red
+      tap_action:
+        action: perform-action
+        perform_action: button.press
+        target:
+          entity_id: button.standing_desk_clear_fault
+
+  # ---- not homed yet -------------------------------------------------
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: binary_sensor.standing_desk_homed
+        state: "off"
+    card:
+      type: tile
+      entity: button.standing_desk_home
+      name: Position unknown (tap to home the desk)
+      icon: mdi:home-import-outline
+      color: amber
+      tap_action:
+        action: perform-action
+        perform_action: button.press
+        target:
+          entity_id: button.standing_desk_home
+        confirmation:
+          text: The desk will drive down slowly to its end stops. Clear the area under it.
+
+  # ---- main control: up / stop / down + position slider ---------------
+  - type: tile
+    entity: cover.standing_desk
+    name: Desk
+    icon: mdi:desk
+    state_content:
+      - state
+      - current_position
+    features:
+      - type: cover-open-close
+      - type: cover-position
+
+  # ---- height readout + target height slider -------------------------
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: tile
+        entity: sensor.standing_desk_height
+        name: Height
+        icon: mdi:human-male-height-variant
+      - type: tile
+        entity: sensor.standing_desk_status
+        name: Status
+        icon: mdi:arrow-up-down
+  - type: tile
+    entity: number.standing_desk_target_height
+    name: Go to height
+    features:
+      - type: numeric-input
+        style: slider
+
+  # ---- presets -------------------------------------------------------
+  - type: grid
+    columns: 4
+    square: false
+    cards:
+      - type: tile
+        entity: number.standing_desk_preset_1_height
+        name: Preset 1
+        icon: mdi:numeric-1-box-outline
+        vertical: true
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_preset_1 }
+        hold_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_save_preset_1 }
+          confirmation: { text: "Save the current height as preset 1?" }
+      - type: tile
+        entity: number.standing_desk_preset_2_height
+        name: Preset 2
+        icon: mdi:numeric-2-box-outline
+        vertical: true
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_preset_2 }
+        hold_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_save_preset_2 }
+          confirmation: { text: "Save the current height as preset 2?" }
+      - type: tile
+        entity: number.standing_desk_preset_3_height
+        name: Preset 3
+        icon: mdi:numeric-3-box-outline
+        vertical: true
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_preset_3 }
+        hold_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_save_preset_3 }
+          confirmation: { text: "Save the current height as preset 3?" }
+      - type: tile
+        entity: number.standing_desk_preset_4_height
+        name: Preset 4
+        icon: mdi:numeric-4-box-outline
+        vertical: true
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_preset_4 }
+        hold_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_save_preset_4 }
+          confirmation: { text: "Save the current height as preset 4?" }
+
+  # ---- stop / level ---------------------------------------------------
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: tile
+        entity: button.standing_desk_stop
+        name: Stop
+        icon: mdi:stop-circle-outline
+        color: red
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_stop }
+      - type: tile
+        entity: button.standing_desk_level
+        name: Level the legs
+        icon: mdi:align-vertical-center
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target: { entity_id: button.standing_desk_level }
+
+  # ---- height history ---------------------------------------------------
+  - type: history-graph
+    title: Sitting / standing today
+    hours_to_show: 12
+    entities:
+      - entity: sensor.standing_desk_height
+        name: Height
+
+  # ---- maintenance (fold away in a sub-view if you prefer) --------------
+  - type: entities
+    title: Desk maintenance
+    state_color: true
+    entities:
+      - entity: sensor.standing_desk_status
+      - entity: sensor.standing_desk_last_message
+        name: Last message
+      - entity: sensor.standing_desk_leg_sync_error
+      - type: divider
+      - entity: button.standing_desk_home
+        name: Home (drive to bottom stops)
+      - entity: button.standing_desk_clear_fault
+      - type: section
+        label: Direction calibration (watch the desk, answer for each leg)
+      - entity: button.standing_desk_calibrate_directions
+        name: Start calibration
+      - entity: button.standing_desk_calibration_answer_went_up
+        name: That leg went UP first
+      - entity: button.standing_desk_calibration_answer_went_down
+        name: That leg went DOWN first
+      - type: section
+        label: Physical preset buttons
+      - entity: button.standing_desk_learn_preset_buttons
+        name: Learn button voltages (then press P1-P4 as prompted)
+      - type: divider
+      - entity: sensor.standing_desk_wi_fi_signal
+      - entity: sensor.standing_desk_motor_driver_i2c_errors
+      - entity: button.standing_desk_restart
